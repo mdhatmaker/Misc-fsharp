@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Episode_001.fs" />
+    <Compile Include="Episode_002.fs" />
+    <Compile Include="Episode_003.fs" />
+    <None Include="TryMe.fsx" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
