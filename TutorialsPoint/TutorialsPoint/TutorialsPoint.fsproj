@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="tp1.fs" />
+    <Compile Include="tp2.fs" />
+    <Compile Include="tp3.fs" />
     <Compile Include="Episode_001.fs" />
     <Compile Include="Episode_002.fs" />
     <Compile Include="Episode_003.fs" />

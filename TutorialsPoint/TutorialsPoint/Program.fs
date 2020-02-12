@@ -86,7 +86,11 @@ let main argv =
     //do_math()
     //string_stuff()
 
-    Episode_003.do1()
+    //Episode_003.do1()
+
+    tp1.main()
+    tp2.main()
+    tp3.main()
 
     Console.ReadKey() |> ignore
 
