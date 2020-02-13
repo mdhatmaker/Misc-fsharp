@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "MLNetConcreteV2", "MLNetConcreteV2.fsproj", "{41C29CA1-F166-4FEB-A154-59B29317CD9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41C29CA1-F166-4FEB-A154-59B29317CD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C29CA1-F166-4FEB-A154-59B29317CD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41C29CA1-F166-4FEB-A154-59B29317CD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41C29CA1-F166-4FEB-A154-59B29317CD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F62C17DD-E079-4031-9EE5-528B3F4ED2B6}
+	EndGlobalSection
+EndGlobal
