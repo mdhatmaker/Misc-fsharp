@@ -88,9 +88,11 @@ let main argv =
 
     //Episode_003.do1()
 
-    tp1.main()
-    tp2.main()
-    tp3.main()
+    //tp1.main()
+    //tp2.main()
+    //tp3.main()
+
+    ParserCombinators.main()
 
     Console.ReadKey() |> ignore
 

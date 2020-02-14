@@ -12,6 +12,7 @@
     <Compile Include="Episode_001.fs" />
     <Compile Include="Episode_002.fs" />
     <Compile Include="Episode_003.fs" />
+    <Compile Include="ParserCombinators.fs" />
     <None Include="TryMe.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
