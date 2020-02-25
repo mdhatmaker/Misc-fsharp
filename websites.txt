@@ -1,0 +1,57 @@
+=== F# RESEARCH ===============================================================
+How to design and code a complete program
+https://fsharpforfunandprofit.com/posts/recipe-part1/
+
+Refactoring to remove cyclic dependencies
+https://fsharpforfunandprofit.com/posts/removing-cyclic-dependencies/
+
+Keynote: The Value of Values
+https://www.infoq.com/presentations/Value-Values/
+
+Parallel Programming in F# (II): Using PLINQ and Tasks
+http://tomasp.net/blog/fsharp-parallel-plinq.aspx/
+
+Active Patterns
+https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/active-patterns
+
+FSharp Tour
+https://docs.microsoft.com/en-us/dotnet/fsharp/tour
+
+
+
+=== MACHINE LEARNING ==========================================================
+Basic regression: Predict fuel efficiency | TensorFlow Core
+https://www.tensorflow.org/tutorials/keras/regression
+
+A simple deep learning model for stock price prediction using TensorFlow
+https://medium.com/mlreview/a-simple-deep-learning-model-for-stock-price-prediction-using-tensorflow-30505541d877
+
+Load data from files and other sources
+https://docs.microsoft.com/en-us/dotnet/machine-learning/how-to-guides/load-data-ml-net
+
+What is Model Builder and how does it work?
+https://docs.microsoft.com/en-us/dotnet/machine-learning/automate-training-with-model-builder#improve
+
+
+
+=== BLOCKCHAIN AND CRYPTO =====================================================
+Tiny Decred (GitHub project)
+https://github.com/buck54321/tinydecred
+
+Publish 0x
+https://www.publish0x.com/login
+
+
+
+=== WEB =======================================================================
+Tutorial: Create a web API with ASP.NET Core
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
+
+ASP.NET Web APIs
+https://dotnet.microsoft.com/apps/aspnet/apis
+
+Get started with Progressive Web Apps
+https://docs.microsoft.com/en-us/microsoft-edge/progressive-web-apps/get-started
+
+
+

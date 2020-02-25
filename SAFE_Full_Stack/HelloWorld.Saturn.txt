@@ -1,0 +1,32 @@
+let helloAction (ctx: HttpContext) = task {
+    return! Controller.text ctx "Hello F# Conf"
+}
+
+let controller = controller<string> {
+    index helloAction
+}
+
+let apiRouter = scope {
+    forward "/hello" controller
+}
+
+let app = application {
+    router apiRouter
+    url "http://0.0.0.0:8085/"
+    use_gzip
+}
+
+
+
+
+(*
+
+/// Saturn CLI Example
+
+1: dotnet new -i Saturn.Template
+2: dotnet new saturn -lang F# -o OutputDir -n AppName
+3: cd OutputDir/src/AppName
+4: dotnet saturn gen.json Pokemon Pokemon id:string number:string name:string
+5: dotnet saturn migration
+
+*)
