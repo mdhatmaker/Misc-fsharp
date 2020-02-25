@@ -302,58 +302,6 @@ module RecordTypes =
 
 
 module DiscriminatedUnions =
-    /// Suit of a playing card
-    type Suit =
-        | Hearts
-        | Clubs
-        | Diamonds
-        | Spades
-    
-    /// A Discriminated Union can also be used to represent the rank of a playing card
-    type Rank =
-        | Value of int
-        | Ace
-        | King
-        | Queen
-        | Jack
-
-        static member GetAllRanks() =
-            [ yield Ace
-              for i in 2..10 do yield Value i
-              yield Jack
-              yield Queen
-              yield King ]
-             
-    /// Record type that combines a Suit and a Rank
-    type Card = { Suit: Suit; Rank: Rank }
-
-    /// Compute a list representing all cards in the deck
-    let fullDeck =
-        [ for suit in [ Hearts; Diamonds; Clubs; Spades ] do
-              for rank in Rank.GetAllRanks() do
-                  yield { Suit=suit; Rank=rank } ]
-
-    let showPlayingCard (c:Card) =
-        let rankString =
-            match c.Rank with
-            | Ace -> "Ace"
-            | King -> "King"
-            | Queen -> "Queen"
-            | Jack -> "Jack"
-            | Value n -> string n
-        let suitString =
-            match c.Suit with
-            | Clubs -> "clubs"
-            | Diamonds -> "diamonds"
-            | Spades -> "spades"
-            | Hearts -> "hearts"
-        rankString + " of " + suitString
-
-    /// Print all the playing cards in a deck
-    let printAllCards() =
-        for card in fullDeck do
-            printfn "%s" (showPlayingCard card)
-
     /// Additionally, you can represent DUs as structs:
     [<Struct>]
     type Shape =
@@ -363,7 +311,7 @@ module DiscriminatedUnions =
     // However, there are two key things to keep in mind when doing so:
     // 1. A struct DU cannot be recursively-defined.
     // 2. A struct DU must have unique names for each of its cases.
-
+ 
 
 /// Single-case DUs are often used for domain modeling
 module SingleCaseDU =

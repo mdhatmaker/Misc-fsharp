@@ -4,6 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="FableScript.fsx" />
+    <Compile Include="PlayingCards.fs" />
+    <Compile Include="PatternStuff.fs" />
     <Compile Include="MTools.fs" />
     <Compile Include="PrimeNumbers.fs" />
     <Compile Include="PF.fs" />
