@@ -4,7 +4,12 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="FableScript.fsx" />
+    <Compile Include="ThinkingFunctionally.fsx" />
+    <Compile Include="OrganizingModules.fs" />
+    <Compile Include="FizzBuzz.fs" />
+    <Compile Include="RailwayCombinatorModule.fs" />
+    <Compile Include="RailwaySample1.fs" />
+    <None Include="SecondScript.fsx" />
     <Compile Include="PlayingCards.fs" />
     <Compile Include="PatternStuff.fs" />
     <Compile Include="MTools.fs" />

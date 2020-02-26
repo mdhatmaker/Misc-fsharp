@@ -3,12 +3,19 @@
 open System
 
 
-#if INTERACTIVE
+(*#if INTERACTIVE
 let msg = "*** Interactive ***"
 #else
 let msg = "*** Not Interactive ***"
 #endif
-printfn "%s" msg
+printfn "%s" msg*)
+
+
+#if DEBUG
+
+printfn "  (skipping %s)" __SOURCE_FILE__
+
+#else
 
 
 module OtherFunctions =
@@ -520,3 +527,5 @@ module ImplementingInterfaces =
 //type Stocks = JsonProvider<"C:\msft.txt">
 
 
+
+#endif
