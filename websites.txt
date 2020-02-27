@@ -1,9 +1,20 @@
+
+
 === F# RESEARCH ===============================================================
 How to design and code a complete program
 https://fsharpforfunandprofit.com/posts/recipe-part1/
 
 Refactoring to remove cyclic dependencies
 https://fsharpforfunandprofit.com/posts/removing-cyclic-dependencies/
+
+Cyclic dependencies are evil
+https://fsharpforfunandprofit.com/posts/cyclic-dependencies/
+
+Why Use F#? - Part 18: Correctness
+https://fsharpforfunandprofit.com/posts/correctness-intro/
+
+Why Use F#? - Part 8: Four Key Concepts
+https://fsharpforfunandprofit.com/posts/key-concepts/
 
 Keynote: The Value of Values
 https://www.infoq.com/presentations/Value-Values/

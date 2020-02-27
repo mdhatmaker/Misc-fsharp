@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>ChartsApp</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Scratch.fsx" />
+    <Compile Include="Charts.fs" />
+    <Compile Include="DomainTypes.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="tutorial.fsx" />
+    <None Include="quickstart.fsx" />
+    <None Include="plotly.fsx" />
+    <None Include="d3.fsx" />
+    <None Include="google-charts.fsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Quandl.NET" Version="1.2.1" />
+    <PackageReference Include="XPlot.GoogleCharts" Version="3.0.1" />
+    <PackageReference Include="XPlot.Plotly" Version="3.0.1" />
+  </ItemGroup>
+
+</Project>
