@@ -1,7 +1,10 @@
 ﻿module DomainTypes
 
-
 /// https://docs.microsoft.com/en-us/dotnet/fsharp/tutorials/type-providers/
+
+open FSharp.Data
+open System
+open System.Net
 
 
 /// The following widely-used libraries contain Type Providers for different uses:
@@ -13,6 +16,13 @@
 ///
 /// You can also create your own custom type providers:
 /// https://docs.microsoft.com/en-us/dotnet/fsharp/tutorials/type-providers/creating-a-type-provider
+
+
+
+
+
+
+
 
 
 

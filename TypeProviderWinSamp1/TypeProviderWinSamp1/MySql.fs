@@ -19,3 +19,12 @@ let rec PrintPurple rows =
         PrintPurple tail
 
 *)
+
+
+(*let sqlData = dbSchema.GetDataContext()
+
+SqlData.Purple
+|> Seq.toList
+|> PrintPurple*)
+
+printfn "--------------------------------------------------------------------------------"

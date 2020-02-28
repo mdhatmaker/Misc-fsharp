@@ -1,45 +1,39 @@
-﻿// Learn more about F# at https://fsharp.org
-// See the 'F# Tutorial' project for more help.
+﻿module MainApp
 
-open MySettings
-open MyJson
-open MySql
+/// https://fsharp.github.io/FSharp.Data/library/WorldBank.html
+
+
+open Qml.Net
+open Qml.Net.Runtimes
+
+open Features
+
+
 
 [<EntryPoint>]
 let main argv =
-    //printfn "%A" argv
+    printfn "argv: %A" argv
+    let sys_argv = argv
+    //let sys_argv = Array.append argv [|"--style"; "material"|]
 
-    (*let sqlData = dbSchema.GetDataContext()
 
-    SqlData.Purple
-    |> Seq.toList
-    |> PrintPurple*)
+    //MyWorldBank.tryMe()
 
     
-    printfn "%f" SettingsData.Keyf1
-    printfn "%s" SettingsData.Keys
-    printfn "%i" SettingsData.Keyi
-    printfn "%f" SettingsData.Keyf2
-    printfn "%b" SettingsData.Keyb
 
-    printfn "---------------------------------------------"
+    RuntimeManager.DiscoverOrDownloadSuitableQtRuntime()
+    //QQuickStyle.SetStyle("Material")
+    use application = new QGuiApplication(sys_argv)
+    use qmlEngine = new QQmlApplicationEngine()
 
-    //let data = JsonData.GetSample()
-    //PrintJson data
+    Qml.Net.Qml.RegisterType<CalculatorModel>("Features")
+    
+    qmlEngine.Load("Main.qml")
 
-    (*let data = JsonData.GetSamples()
-    Array.toList data
-    |> PrintJsonArray*)
-
-    let data = JsonData.Load("https://localhost:44323/api/values/")
-    Array.toList data
-    |> PrintJsonArray
-
-    printfn "---------------------------------------------"
+    application.Exec()
 
 
-
-    System.Console.Write("Press any key... ")
+    (*System.Console.Write("Press any key... ")
     System.Console.ReadKey() |> ignore
+    0 // return an integer exit code*)
 
-    0 // return an integer exit code

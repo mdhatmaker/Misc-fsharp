@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="ChartModule.fs" />
+    <Compile Include="QuandlTypes.fs" />
+    <Compile Include="QuandlModule.fs" />
     <None Include="Scratch.fsx" />
-    <Compile Include="Charts.fs" />
     <Compile Include="DomainTypes.fs" />
     <Compile Include="Program.fs" />
     <None Include="tutorial.fsx" />
@@ -19,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FSharp.Data" Version="3.3.3" />
     <PackageReference Include="Quandl.NET" Version="1.2.1" />
     <PackageReference Include="XPlot.GoogleCharts" Version="3.0.1" />
     <PackageReference Include="XPlot.Plotly" Version="3.0.1" />

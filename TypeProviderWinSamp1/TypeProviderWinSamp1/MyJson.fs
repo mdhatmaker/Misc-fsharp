@@ -50,4 +50,27 @@ let rec PrintJsonArray a =
         PrintJson head
         printfn ""
         PrintJsonArray tail
+
+
+
+
+let tryMe() =
+
+    //let data = JsonData.GetSample()
+    //PrintJson data
+
+    (*let data = JsonData.GetSamples()
+    Array.toList data
+    |> PrintJsonArray*)
+
+    let data = JsonData.Load("https://localhost:44323/api/values/")
+    Array.toList data
+    |> PrintJsonArray
+
+    printfn "---------------------------------------------"
+
+
+
+
+
         

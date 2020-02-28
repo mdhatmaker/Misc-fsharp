@@ -58,10 +58,6 @@
     <Compile Include="CalculatorModel.fs" />
     <Compile Include="Program.fs" />
     <Content Include="code1.txt" />
-    <Content Include="Main.qml" CopyToPublishDirectory="Always" />
-    <Content Include="images\**" CopyToPublishDirectory="Always" />
-    <Content Include="pages\**" CopyToPublishDirectory="Always" />
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Configuration">
       <HintPath>..\packages\FSharp.Configuration.1.5.0\lib\net45\FSharp.Configuration.dll</HintPath>

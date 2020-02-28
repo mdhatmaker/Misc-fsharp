@@ -1,4 +1,4 @@
-﻿module Charts
+﻿module ChartModule
 
 
 /// https://github.com/fslaborg/XPlot/blob/master/docsrc/content/index.fsx
@@ -14,8 +14,7 @@
 open System
 open XPlot.GoogleCharts
 //open XPlot.Plotly
-open Quandl.NET
-open System.Collections.Generic
+
 
  //type Foo =
  //       static member Bar(?x : int) = 2 * x;
@@ -49,78 +48,18 @@ let HobbsPearson =
       Color = "rgb(230,171,2)" } ]
 
 
-      
-let strf x =
-    match x with
-    | Some x -> sprintf "%.2f" x 
-    | None -> " "
+let createChart title series labels inputs =
+    inputs
+    |> Chart.Combo
+    |> Chart.WithOptions 
+         (Options(title = title, 
+                  series = [| for typ in series -> Series(typ) |]))
+    |> Chart.WithLabels labels
+    |> Chart.WithLegend true
+    |> Chart.WithSize (1024, 768)
 
-let stri x =
-    match x with
-    | Some x -> sprintf "%.0f" x 
-    | None -> " "
-
-
-// https://stackoverflow.com/questions/791706/how-do-i-customize-output-of-a-custom-type-using-printf
-//[<StructuredFormatDisplay("stock {Date} {Open} {High} {Low} {Close} {Volume} (ok)")>]
-[<StructuredFormatDisplay("{Date} {Open} {High} {Low} {Close} {Volume} | {ExDividend} {SplitRatio} | {AdjOpen} {AdjHigh} {AdjLow} {AdjClose} {AdjVolume}")>]
-type StockData =
-    { Date:string
-      Open:float
-      High:float
-      Low:float
-      Close:float
-      Volume:float
-      ExDividend:float
-      SplitRatio:float
-      AdjOpen:float
-      AdjHigh:float
-      AdjLow:float
-      AdjClose:float
-      AdjVolume:float }
-    override m.ToString() = sprintf "%s o:%.2f h:%.2f l:%.2f c:%.2f v:%.0f  exdiv:%.2f split:%.2f  ao:%.2f ah:%.2f al:%.2f ac:%.2f av:%.0f" m.Date m.Open m.High m.Low m.Close m.Volume m.ExDividend m.SplitRatio m.AdjOpen m.AdjHigh m.AdjLow m.AdjClose m.AdjVolume
-
-[<StructuredFormatDisplay("{Date} {Open} {High} {Low} {Settle} {Change} | {Wave} {Volume} | {PrevDayOpenInterest} {EFPVolume} {EFSVolume} {BlockVolume}")>]
-type ContinuousData =
-    { Date:string
-      Open:float option
-      High:float option
-      Low:float option
-      Settle:float option
-      Change:float option
-      Wave:float option
-      Volume:float option
-      PrevDayOpenInterest:float option
-      EFPVolume:float option
-      EFSVolume:float option
-      BlockVolume:float option }
-    override m.ToString() = sprintf "%s o:%s h:%s l:%s s:%s chg:%s  wave:%s v:%s  oi:%s efpv:%s efsv:%s bv:%s" m.Date (strf m.Open) (strf m.High) (strf m.Low) (strf m.Settle) (strf m.Change) (strf m.Wave) (strf m.Volume) (strf m.PrevDayOpenInterest) (strf m.EFPVolume) (strf m.EFSVolume) (strf m.BlockVolume)
-
-// Under $100_000; $100_000 - $199_999; $200_000 - $299_999; $300_000 - $399_999;
-// $400_000 - $499_999; $500_000 +; DK; NA; 25th Percentile; Median; 75th Percentile;
-// Interquartile Range (75th-25th);
-[<StructuredFormatDisplay("{Date} {PriceUnder100} {Price100to199} {Price200to299} {Price300to399} {Price400to499} {PriceOver500} | {DK} {NA} | {Pct25} {Median} {Pct75} {InterquartileRange}")>]
-type UmichConsumerData =
-    { Date:string
-      PriceUnder100:float option
-      Price100to199:float option
-      Price200to299:float option
-      Price300to399:float option
-      Price400to499:float option
-      PriceOver500:float option
-      DKNA:float option
-      Pct25:float option
-      Median:float option
-      Pct75:float option
-      InterquartileRange:float option }
-    //override m.ToString() = sprintf "%s <100:%s 100-199:%s 200-299:%s 300-399:%s 400-499:%s >500:%s  DK:%s NA:%s  25pct:%s median:%s 75pct:%s IQRng:%s" m.Date (strf m.PriceUnder100) (strf m.Price100to199) (strf m.Price200to299) (strf m.Price300to399) (strf m.Price400to499) (strf m.PriceOver500) (strf m.DK) (strf m.NA) (strf m.Pct25) (strf m.Median) (strf m.Pct75) (strf m.InterquartileRange)
-    override m.ToString() = sprintf "%s <100:%s 100-199:%s 200-299:%s 300-399:%s 400-499:%s >500:%s  DK/NA:%s  25pct:%s median:%s 75pct:%s IQRng:%s" m.Date (stri m.PriceUnder100) (stri m.Price100to199) (stri m.Price200to299) (stri m.Price300to399) (stri m.Price400to499) (stri m.PriceOver500) (stri m.DKNA) (stri m.Pct25) (stri m.Median) (stri m.Pct75) (stri m.InterquartileRange)
-
-[<StructuredFormatDisplay("{date} {value}")>]
-type ZillowData =
-    { date:string
-      value:float option }
-    override m.ToString() = sprintf "%s value:%s" m.date (strf m.value)
+let showChart chart =
+    Chart.Show chart
 
 
 
@@ -133,10 +72,12 @@ let tryIt() =
     
     let series = [ "bars"; "bars"; "bars"; "lines" ]
     let inputs = [ Bolivia; Ecuador; Madagascar; Average ]
+    let labels = ["Bolivia"; "Ecuador"; "Madagascar"; "Average"]
 
-    
+    let chart1 = createChart "Coffee Production" series labels inputs
+    showChart chart1
 
-    let chart1 =
+    (*let chart1 =
         inputs
         |> Chart.Combo
         |> Chart.WithOptions 
@@ -144,10 +85,9 @@ let tryIt() =
                       series = [| for typ in series -> Series(typ) |]))
         |> Chart.WithLabels ["Bolivia"; "Ecuador"; "Madagascar"; "Average"]
         |> Chart.WithLegend true
-        |> Chart.WithSize (1024, 768)
+        |> Chart.WithSize (1024, 768)*)
     
     //Chart.Show chart1
-
 
     (*// *** hide ***
     // *** define-output:polar ***
@@ -166,167 +106,7 @@ let tryIt() =
         |> Chart.WithLayout layout*)
 
 
-    let quandlApiKey = "gCbpWopzuxctHw6y-qq5"
-    let client = new QuandlClient(quandlApiKey)
-
-    // Add the required settings to pull down data:
-    let settings = new Dictionary<string, string>();
-    settings.Add("collapse", "weekly");
-    settings.Add("trim_start", "2010-02-01");
-    settings.Add("trim_end", "2010-04-28");
-    settings.Add("transformation", "normalize");
-    settings.Add("sort_order", "asc");
-    // Fetch:
-    //IList<CsvFinancialFormat> data = myQuandl.GetData<CsvFinancialFormat>("YAHOO/MX_IBM", settings); //"GOOG/NYSE_IBM"
-    //let data = myQuandl.GetData<CsvFinancialFormat>("YAHOO/MX_IBM", settings); //"GOOG/NYSE_IBM"
-
-
-
-    // The call
-    // stocks
-    //let db = ("WIKI", "FB")
-    // continuous
-    //let db = ("CHRIS", "ICE_G1")
-    //let db = ("CHRIS", "ICE_O1")
-    //let db = ("CHRIS", "ICE_B1")
-    //let db = ("ZILLOW", "Z46321_IMP")
-    let db = ("UMICH", "SOC22")
-
-
-    //let dataTask = client.Timeseries.GetDataAsync("WIKI", "FB")
-    let dataTask = client.Timeseries.GetDataAsync(fst db, snd db)
-
-    dataTask.Wait()
-    let result = dataTask.Result
-    //await client.Timeseries.GetDataAsync("WIKI", "FB");
-    //let dataTask = Async.AwaitTask (client.Timeseries.GetDataAsync("WIKI", "FB"))
-    //let result = dataTask.Result
-
-    // Output: "Date; Open; High; Low; Close; Volume; Ex-Dividend; Split Ratio; Adj. Open; Adj. High; Adj. Low; Adj. Close; Adj. Volume"
-    //printfn "%s" (String.Join ["; "; result.DatasetData.ColumnNames])
-    
-    let columnNames = [ for column in result.DatasetData.ColumnNames do column + ";" ]
-    
-    printfn "COLUMN NAMES:"
-    List.iter (printf "%s ") columnNames
-    printfn ""
-
-    // Output: "2017-05-26; 152.23; 152.25; 151.15; 152.13; 14907827; 0; 1; 152.23; 152.25; 151.15; 152.13; 14907827"
-    //printfn "%s" (string.Join("; ", result.DatasetData.Data.First()))
-
-    (*// Debug Purposes Only
-    //for (CsvFinancialFormat tick in data)
-    for tick in data do
-    {
-        //Console.WriteLine(tick.Time.ToShortDateString() + " H: " + tick.High);
-        Console.WriteLine(tick.InputString);
-    }*)
-
-    //[ for tick in result2 do tick.InputString + "\n" ]
-    let resultData = result.DatasetData.Data
-   
-
-    let tos (o:obj) = (string o)
-        
-    let tof (o:obj) = float (string o)
-        
-    let trytof (o:obj) =
-        let (success,x) = Double.TryParse(string o)
-        if success then Some x
-        else None
-
-    let parseStockData (item:obj[]) =
-        { Date=(tos item.[0]); Open=(tof item.[1]); High=(tof item.[2]); Low=(tof item.[3]); Close=(tof item.[4]); Volume=(tof item.[5]);
-          ExDividend=(tof item.[6]); SplitRatio=(tof item.[7]);
-          AdjOpen=(tof item.[8]); AdjHigh=(tof item.[9]); AdjLow=(tof item.[10]); AdjClose=(tof item.[11]); AdjVolume=(tof item.[12])
-          }
-
-    let parseContinuousData (item:obj[]) =
-        { Date=(tos item.[0]); Open=(trytof item.[1]); High=(trytof item.[2]); Low=(trytof item.[3]); Settle=(trytof item.[4]);
-          Change=(trytof item.[5]); Wave=(trytof item.[6]); Volume=(trytof item.[7]); PrevDayOpenInterest=(trytof item.[8]);
-          EFPVolume=(trytof item.[9]); EFSVolume=(trytof item.[10]); BlockVolume=(trytof item.[11])
-          }
-
-    let parseUmichConsumerData (item:obj[]) =
-        { Date=(tos item.[0]); PriceUnder100=(trytof item.[1]); Price100to199=(trytof item.[2]); Price200to299=(trytof item.[3]); Price300to399=(trytof item.[4]); Price400to499=(trytof item.[5]); PriceOver500=(trytof item.[6]);
-          DKNA=(trytof item.[7]);
-          Pct25=(trytof item.[8]); Median=(trytof item.[9]); Pct75=(trytof item.[10]); InterquartileRange=(trytof item.[11]);
-          }
-
-    let parseZillowData (item:obj[]) =
-        { date=(tos item.[0]); value=(trytof item.[1]);
-          }
-
-    let processStocks data =
-        //let stockData = parseStockData (resultData.Item 0)
-        //printfn "STOCK DATA:\n%A\n" stockData           // print a single row of data
-        printfn "STOCK DATA:"
-
-        let li = List.ofSeq data    // use List.ofSeq to convert 'List<T>' to 'T list'
-
-        li                                              // print a list of rows of data
-        //|> List.take 25
-        |> List.map parseStockData
-        |> List.iter (fun x -> printfn "%s" (x.ToString()))
-        //|> List.iter (printfn "%A")
-    
-    let processContinuous data =
-        //let continuousData = parseContinuousData (resultData.Item 0)
-        //printfn "CONTINUOUS DATA:\n%A\n" continuousData           // print a single row of data
-        printfn "CONTINUOUS DATA:"
-
-        let li = List.ofSeq data    // use List.ofSeq to convert 'List<T>' to 'T list'
-
-        (*li
-        |> List.take 500
-        |> List.iter (fun x -> printfn "%A" x)*)
-
-        li                                              // print a list of rows of data
-        |> List.take 100
-        //|> List.map (fun x -> printfn "%A" x; parseContinuousData x)
-        |> List.map parseContinuousData
-        |> List.iter (fun x -> printfn "%s" (x.ToString()))
-        //|> List.iter (printfn "%A")
-    
-    let processZillow displayCount data =
-        printfn "ZILLOW DATA:"
-        let li = List.ofSeq data
-        li
-        |> List.take (Math.Min(displayCount, li.Length))
-        //|> List.map (fun x -> printfn "%A" x; parseContinuousData x)
-        |> List.map parseZillowData
-        |> List.iter (fun x -> printfn "%s" (x.ToString()))
-        //|> List.iter (printfn "%A")
-
-    let processUmichConsumer displayCount data =
-        printfn "UMICH CONSUMER SURVEY DATA:"
-        let li = List.ofSeq data
-        li
-        |> List.take (Math.Min(displayCount, li.Length))
-        //|> List.map (fun x -> printfn "%A" x; parseContinuousData x)
-        |> List.map parseUmichConsumerData
-        |> List.iter (fun x -> printfn "%s" (x.ToString()))
-        //|> List.iter (printfn "%A")
-
-
-
-    (*resultData
-    |>List.ofSeq 
-    |> List.filter (fun x -> (string x.[0]) = "2018-03-19")
-    |> List.map parseContinuousData
-    |> printfn "%A"*)
-
-
-    processUmichConsumer 50 resultData
-    //processZillow 50 resultData
-    //processContinuous resultData
-    //processStocks resultData
-    
-
-    let lastIndex = resultData.Count - 1
-    let item = resultData.Item lastIndex
-    printfn "\n\n%s %s    data count: %i" (fst db) (snd db) resultData.Count
-    printfn "%A \n" item
+ 
         
 
     (*Console.Write("Press any key ... ")

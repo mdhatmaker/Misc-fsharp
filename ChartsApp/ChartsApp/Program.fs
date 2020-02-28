@@ -4,8 +4,9 @@ open System
 
 [<EntryPoint>]
 let main argv =
-    printfn "   *** Charts in F# ***"
+    printfn "   *** Charts and Quandl in F# ***"
 
-    Charts.tryIt()
+    //ChartModule.tryIt()
+    QuandlModule.tryIt()
 
     0 // return an integer exit code
