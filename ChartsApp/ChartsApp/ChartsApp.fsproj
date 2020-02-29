@@ -7,17 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ChartModule.fs" />
+    <Compile Include="DomainTypes.fs" />
+    <Compile Include="YahooFinanceModule.fs" />
     <Compile Include="QuandlTypes.fs" />
     <Compile Include="QuandlModule.fs" />
-    <None Include="Scratch.fsx" />
-    <Compile Include="DomainTypes.fs" />
+    <Compile Include="ChartModule.fs" />
     <Compile Include="Program.fs" />
     <None Include="tutorial.fsx" />
     <None Include="quickstart.fsx" />
     <None Include="plotly.fsx" />
     <None Include="d3.fsx" />
     <None Include="google-charts.fsx" />
+    <None Include="Scratch.fsx" />
   </ItemGroup>
 
   <ItemGroup>

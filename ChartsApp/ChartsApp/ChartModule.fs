@@ -12,6 +12,7 @@
 
 
 open System
+open System.Collections.Generic
 open XPlot.GoogleCharts
 //open XPlot.Plotly
 
@@ -49,21 +50,36 @@ let HobbsPearson =
 
 
 let createChart title series labels inputs =
+    // Set chart options
+    let options = (Options(title=title,
+                           width = 1200,
+                           height = 1000,
+                           chartArea = ChartArea(width="85%", height="80%"),
+                           //legend = Legend(position="bottom"),
+                           series = [| for typ in series -> Series(typ) |]))
     inputs
     |> Chart.Combo
-    |> Chart.WithOptions 
-         (Options(title = title, 
-                  series = [| for typ in series -> Series(typ) |]))
+    |> Chart.WithOptions options
+         //(Options(title = title, series = [| for typ in series -> Series(typ) |]))
     |> Chart.WithLabels labels
-    |> Chart.WithLegend true
-    |> Chart.WithSize (1024, 768)
+    |> Chart.WithLegend false   //true
+    //|> Chart.WithSize (1024, 768)
 
 let showChart chart =
     Chart.Show chart
 
+let getDataPoint dt (y:obj) : (string * float) =
+    let y' = Convert.ToDouble(y)
+    ( string dt, y' )
+    
+let quandlToChartInputs (data : List<obj[]>) : (string * float) list =
+    Seq.toList data
+    |> List.rev
+    |> List.map ( fun x -> (getDataPoint x.[0] x.[1]) )
+    //["2004/05", 165.; "2005/06", 135.; "2006/07", 157.; "2007/08", 139.; "2008/09", 136.]
 
 
-let tryIt() =
+let demo() =
     
     let Bolivia = ["2004/05", 165.; "2005/06", 135.; "2006/07", 157.; "2007/08", 139.; "2008/09", 136.]
     let Ecuador = ["2004/05", 938.; "2005/06", 1120.; "2006/07", 1167.; "2007/08", 1110.; "2008/09", 691.]
@@ -76,6 +92,20 @@ let tryIt() =
 
     let chart1 = createChart "Coffee Production" series labels inputs
     showChart chart1
+
+
+    let sales = [("2013", 1000); ("2014", 1170); ("2015", 660); ("2016", 1030)]
+    let expenses = [("2013", 400); ("2014", 460); ("2015", 1120); ("2016", 540)]
+ 
+    let options =
+      Options
+        ( title = "Company Performance", curveType = "function",
+          legend = Legend(position = "bottom") )
+            
+    [sales; expenses]
+    |> Chart.Line
+    |> Chart.WithOptions options
+    |> Chart.WithLabels ["Sales"; "Expenses"]
 
     (*let chart1 =
         inputs
