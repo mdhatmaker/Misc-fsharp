@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Scrratch.fsx" />
+    <Compile Include="BL\FrameController.fs" />
+    <Compile Include="BL\IFrameController.fs" />
+    <Compile Include="BL\PhotoDatabases.fs" />
+    <Compile Include="BL\ViewSwitchType.fs" />
+    <Compile Include="BL\ViewTypes.fs" />
+    <Compile Include="AppModel.fs" />
+  </ItemGroup>
+
+</Project>

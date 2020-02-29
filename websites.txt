@@ -28,6 +28,52 @@ https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/active-pattern
 FSharp Tour
 https://docs.microsoft.com/en-us/dotnet/fsharp/tour
 
+F# Operations on Lists
+https://mariusbancila.ro/blog/2009/12/07/fsharp-operations-on-list/
+
+Adding Ruby and C# Operators to F#
+https://mixedsyntax.wordpress.com/2009/04/28/adding-ruby-and-c-operators-to-f/
+
+F Sharp Programming/Sets and Maps
+https://en.wikibooks.org/wiki/F_Sharp_Programming/Sets_and_Maps
+
+F# Data: WorldBank Provider
+https://fsharp.github.io/FSharp.Data/library/WorldBank.html
+
+FSharp.Interop.Dynamic
+https://github.com/fsprojects/FSharp.Interop.Dynamic
+
+Classes
+https://fsharpforfunandprofit.com/posts/classes/
+
+Inheritance and Abstract Classes
+https://fsharpforfunandprofit.com/posts/inheritance/
+
+Interfaces
+https://fsharpforfunandprofit.com/posts/interfaces/
+
+The "Thinking Functionally" Series - Part 11: Attaching Functions to Types
+https://fsharpforfunandprofit.com/posts/type-extensions/
+
+The "Expressions and Syntax" Series: Part 7 - Control Flow Expressions (and how to avoid using them)
+https://fsharpforfunandprofit.com/posts/control-flow-expressions/
+
+Quandl.NET
+https://github.com/lppkarl/Quandl.NET
+
+Build Concurrent Apps in Visual Studio Using Easy F# Expressions
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2008/october/build-concurrent-apps-in-visual-studio-using-easy-fsharp-expressions
+
+
+
+
+
+
+
+
+
+
+
 
 
 === MACHINE LEARNING ==========================================================
