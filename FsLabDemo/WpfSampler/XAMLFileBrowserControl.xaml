@@ -1,0 +1,17 @@
+﻿<UserControl   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"  
+      x:Class="McXamlLib.XamlFileBrowser"
+      x:Name="XAMLFileBrowserControl"
+      d:DesignWidth="397" d:DesignHeight="39">
+  <Grid x:Name="LayoutRoot" Height="42" Width="504">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="0.352*"/>
+      <ColumnDefinition Width="0.648*"/>
+    </Grid.ColumnDefinitions>
+    <TextBox x:Name="FBCTextBox" Margin="4,10.313,137,4.001" Text="TextBox" TextWrapping="Wrap" Grid.ColumnSpan="2" TextChanged="FBCTextBox_TextChanged" />
+    <Button x:Name="FBCButton" HorizontalAlignment="Right" Margin="0,8,13,4" Width="111" Content="Browse" Grid.Column="1" Click="FBCButton_Click" />
+  </Grid>
+</UserControl>

@@ -1,0 +1,16 @@
+﻿// Learn more about F# at http://fsharp.org
+
+open System
+
+
+[<EntryPoint>]
+let main argv =
+    printfn "SignalR Client\n"
+
+
+
+
+
+
+
+    0 // return an integer exit code
