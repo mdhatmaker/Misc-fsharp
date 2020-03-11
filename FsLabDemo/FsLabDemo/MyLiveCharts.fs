@@ -1,6 +1,7 @@
 ﻿module MyLiveCharts
 
 /// https://fslab.org/FSharp.Charting/LiveChartSamples.html
+/// https://github.com/fslaborg/FSharp.Charting/blob/master/docs/content/PointAndLineCharts.fsx
 
 
 #if INTERACTIVE
@@ -115,23 +116,22 @@ let liveDemo12 () =
      |> LiveChart.LineIncremental
 
 
-
-
+/// Returns: GenericChart
 let demo (demoId:string) =
     //printfn "STARTING %s......\n" __SOURCE_FILE__
     match demoId with
-    | "1" -> liveDemo1()
-    | "2" -> liveDemo2()
-    | "3" -> liveDemo3()
-    | "4" -> liveDemo4()
-    | "5" -> liveDemo5()
-    | "6" -> liveDemo6()
-    | "7" -> liveDemo7()
-    | "8" -> liveDemo8()
-    | "9" -> liveDemo9()
-    | "10" -> liveDemo10()
-    | "11" -> liveDemo11()
-    | "12" -> liveDemo12()
+    | "11" -> liveDemo1()
+    | "12" -> liveDemo2()
+    | "13" -> liveDemo3()
+    | "14" -> liveDemo4()
+    | "15" -> liveDemo5()
+    | "16" -> liveDemo6()
+    | "17" -> liveDemo7()
+    | "18" -> liveDemo8()
+    | "19" -> liveDemo9()
+    | "20" -> liveDemo10()
+    | "21" -> liveDemo11()
+    | "22" -> liveDemo12()
     //printfn "\n...........%s END" __SOURCE_FILE__
 
 

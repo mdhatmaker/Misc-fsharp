@@ -47,6 +47,7 @@
   </PropertyGroup>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Content Include="README.txt" />
     <Content Include="packages.config" />
     <None Include="Scratch.fsx" />
     <Content Include="Google.DataTable.Net.Wrapper.XML" />

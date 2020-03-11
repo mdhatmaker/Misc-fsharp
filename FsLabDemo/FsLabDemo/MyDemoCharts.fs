@@ -83,22 +83,24 @@ let randomPoints = [ for i in 0 .. 1000 -> rand(), rand() ]
 
 let demo4 () =
     // Draw scatter plot  of points
-    Chart.Point randomPoints
+    //randomPoints |> Chart.Point(Title = "Scatter Plot") |> Chart.Show
+    // TODO: How do I pass 'Title' to the above "pipelined" version?
+    Chart.Point(data=randomPoints, Name="Scatter Plot").ShowChart() |> ignore
 
-let demo5() =
+let demo5 () =
     let pricesWithDates = 
         prices |> List.mapi (fun i (hi,lo,op,cl) -> 
             (DateTime.Today.AddDays(float i).ToShortDateString(), hi, lo, op, cl))
     // Candlestick chart price range specified
     Chart.Candlestick(pricesWithDates).WithYAxis(Max = 29.0, Min = 25.0).ShowChart() |> ignore
     
-let demo5'() =
+(*let demo5'() =
     let pricesWithDates = 
         prices |> List.mapi (fun i (hi,lo,op,cl) -> 
             (DateTime.Today.AddDays(float i).ToShortDateString(), hi, lo, op, cl))
     // Alternative specification using pipelining
     Chart.Candlestick(pricesWithDates)
-    |> Chart.WithYAxis(Max = 29.0, Min = 25.0)
+    |> Chart.WithYAxis(Max = 29.0, Min = 25.0)*)
 
 
 let demo6 () =
@@ -117,35 +119,85 @@ let demo6 () =
     Chart.Combine(
        [ Chart.Line(expectedIncome,Name="Income")
          Chart.Line(expectedExpenses,Name="Expenses") 
-         Chart.Line(computedProfit,Name="Profit") ]).ShowChart()
+         Chart.Line(computedProfit,Name="Profit") ]).ShowChart() |> ignore
+    ()  // return unit
 
 let demo7 () =
     let data = WorldBankData.GetDataContext()
     data
         .Countries.``United Kingdom``
         .Indicators.``Gross capital formation (% of GDP)``
-    |> Chart.Line |> Chart.Show
+    |> Chart.Line |> Chart.Show     // TODO: How do I pass 'Title' to Chart.Line?
     let revenue = data.Countries.Africa.Indicators.``Revenue, excluding grants (% of GDP)``
     let expense = data.Countries.Africa.Indicators.``Expense (% of GDP)``
-    let newtup (t1:int*float) (t2:int*float) =
-        
+    let subTuple (t1:int*float) (t2:int*float) =
+        let t1a,t1b = t1
+        let t2a,t2b = t2
+        // assert: t1a = t2a
+        if t1a <> t2a then
+            printfn "ERROR! subTuple: 1st tuple elements should be equal"
+        (t1a, (t1b-t2b))
+
     let net = Seq.zip revenue expense
-              |> Seq.map (fun (tup1,tup2) -> (fst tup1),((snd tup1) - (snd tup2)) )
-    ()
+              |> Seq.map (fun (tup1,tup2) -> subTuple tup1 tup2 )
+              |> printfn "%A"
+    ()  // return unit
+
+// If the 'Asynchronous' parameter is set to 'true' then the type provider
+// generates all operations as asynchronous:
+type WorldBank = WorldBankDataProvider<"World Development Indicators", Asynchronous=true>
+
+/// Downloading data in parallel
+let demo8 () =
+    let wb = WorldBank.GetDataContext()
+    // Create a list of countries to process
+    let countries =
+        [| wb.Countries.``Arab World``
+           wb.Countries.``European Union``
+           wb.Countries.Australia
+           wb.Countries.Brazil
+           wb.Countries.Canada
+           wb.Countries.Chile
+           wb.Countries.``Czech Republic``
+           wb.Countries.Denmark
+           wb.Countries.France
+           wb.Countries.Greece
+           wb.Countries.``Low income``
+           wb.Countries.``High income``
+           wb.Countries.``United Kingdom``
+           wb.Countries.``United States`` |]
+    
+    // To download the information in parallel, we can create a list of asynchronous
+    // computations, compose them using 'Async.Parallel' and then run the (single)
+    // obtained computation to perform all the downloads:
+    [ for c in countries ->
+        c.Indicators.``Gross capital formation (% of GDP)`` ]
+    |> Async.Parallel
+    |> Async.RunSynchronously
+    |> Array.map Chart.Line
+    |> Chart.Combine
+    |> Chart.Show |> ignore
+    // The above snippet downloads the data using 'Async.RunSynchronously', but
+    // it also turns every single downloaded data set into a line chart (using
+    // 'Chart.Line') and then creates a single composed chart using 'Chart.Combine'.
+    ()  // return unit
 
 
-let demo (ndemo:int) =
+
+/// Returns: unit
+let demo (demoId:string) =
     printfn "STARTING %s......\n" __SOURCE_FILE__
 
-    match ndemo with
-    | 1 -> Chart.Candlestick(prices).WithYAxis(Max = 29.0, Min = 25.0).ShowChart() |> ignore
-    | 2 -> Chart.Stock(prices).WithYAxis(Max = 29.0, Min = 25.0).ShowChart() |> ignore
-    | 3 -> Chart.Line([ for x in 0 .. 10 -> x, x*x ]).ShowChart() |> ignore
-    | 4 -> demo4()
-    | 5 -> demo5()
-    | 6 -> demo6()
-    | 7 -> demo7()
-
+    match demoId with
+    | "1" -> Chart.Candlestick(prices).WithYAxis(Max = 29.0, Min = 25.0).ShowChart() |> ignore
+    | "2" -> Chart.Stock(prices).WithYAxis(Max = 29.0, Min = 25.0).ShowChart() |> ignore
+    | "3" -> Chart.Line([ for x in 0 .. 10 -> x, x*x ]).ShowChart() |> ignore
+    | "4" -> demo4()
+    | "5" -> demo5()
+    | "6" -> demo6()
+    | "7" -> demo7()
+    | "8" -> demo8()
+    | _ -> printfn "ERROR! MyDemoCharts.demo: No match for demoId '%s'" demoId
 
     printfn "\n...........%s END" __SOURCE_FILE__
 

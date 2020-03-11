@@ -1,23 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net471</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Page Include="XAMLFileBrowserControl.xaml">
+    <Content Include="README.txt" />
+    <Page Include="component\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="component\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="component\XAMLFileBrowserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="XAMLFileBrowserControl.xaml.fs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="MainWindow.xaml.fs" />
-    <Page Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="App.fs" />
+    <Compile Include="App.xaml.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

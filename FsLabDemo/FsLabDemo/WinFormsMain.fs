@@ -16,7 +16,7 @@ open FSharp.Charting.ChartTypes
 
 //-------------------------------------------------------------------
 module FormModule =
-    let form = new Form(Visible=true, Text="A Web Browser control")
+    let form = new Form(Visible=true, Text="FSharp.Charting Demo")
     let container = new TableLayoutPanel(ColumnCount=4, RowCount=5)
     let label = new Label(Text="Address:")
     let address = new TextBox(Margin=new Padding(5, 2, 30, 2))
@@ -32,15 +32,17 @@ module FormModule =
     let font = new Font(FontFamily.GenericSansSerif, (float32) 40, FontStyle.Bold)
     let mutable blankLabel = new Label(Text=" ")
     blankLabel.Margin <- new Padding(1) //(left, top, right, bottom)
-    let btn1 = new ToolStripButton(Text="1", Font=font)
+    (*let btn1 = new ToolStripButton(Text="1", Font=font)
     let btn2 = new ToolStripButton(Text="2", Font=font)
     let btn3 = new ToolStripButton(Text="3", Font=font)
     let btn4 = new ToolStripButton(Text="4", Font=font)
     let btn5 = new ToolStripButton(Text="5", Font=font)
     let btn6 = new ToolStripButton(Text="6", Font=font)
-    let btn7 = new ToolStripButton(Text="7", Font=font)
+    let btn7 = new ToolStripButton(Text="7", Font=font)*)
 
-    let btnsB = [ for i in 1..12 do yield new ToolStripButton(Text=i.ToString(), Font=font) ]
+    let btnsA = [ for i in 1..10 do yield new ToolStripButton(Text=i.ToString(), Font=font) ]
+
+    let btnsB = [ for i in 1..12 do yield new ToolStripButton(Text=(i+10).ToString(), Font=font) ]
 
     
         
@@ -58,26 +60,47 @@ module FormModule =
 
     toolbarA.Items.Add(back) |> ignore
     toolbarA.Items.Add(forward) |> ignore
-    toolbarA.Items.Add(btn1) |> ignore
+    (*toolbarA.Items.Add(btn1) |> ignore
     toolbarA.Items.Add(btn2) |> ignore
     toolbarA.Items.Add(btn3) |> ignore
     toolbarA.Items.Add(btn4) |> ignore
     toolbarA.Items.Add(btn5) |> ignore
     toolbarA.Items.Add(btn6) |> ignore
-    toolbarA.Items.Add(btn7) |> ignore
+    toolbarA.Items.Add(btn7) |> ignore*)
 
 
-    let buttonClicked (txt:string) =
-        printfn "buttonClicked: '%s'" txt
+    let buttonClickedA (txt:string) =
+        printfn "buttonClickedA: '%s'" txt
+        let chart = MyDemoCharts.demo txt
+        chartPanel.Controls.Clear()
+        // these demo charts are displayed individually in popup windows
+        (*let chartControl = new ChartControl(chart)
+        chartPanel.Controls.Add(chartControl)
+        chartControl.Dock <- DockStyle.Fill*)
+
+    /// CLICK NUMBERED BUTTONS TO LAUNCH DEMO SECTIONS
+    (*btn1.Click.Add(fun _ -> MyDemoCharts.demo 1 |> ignore)
+    btn2.Click.Add(fun _ -> MyDemoCharts.demo 2 |> ignore)
+    btn3.Click.Add(fun _ -> MyDemoCharts.demo 3 |> ignore)
+    btn4.Click.Add(fun _ -> MyDemoCharts.demo 4 |> ignore)
+    btn5.Click.Add(fun _ -> MyDemoCharts.demo 5 |> ignore)
+    btn6.Click.Add(fun _ -> MyDemoCharts.demo 5 |> ignore)*)
+    for a in btnsA do
+        toolbarA.Items.Add(a) |> ignore
+        a.Click.Add(fun _ -> buttonClickedA a.Text |> ignore)
+
+    let buttonClickedB (txt:string) =
+        printfn "buttonClickedB: '%s'" txt
         let chart = MyLiveCharts.demo txt
         chartPanel.Controls.Clear()
+        // these live charts are displayed in our UI chartPanel
         let chartControl = new ChartControl(chart)
         chartPanel.Controls.Add(chartControl)
         chartControl.Dock <- DockStyle.Fill
 
     for b in btnsB do
         toolbarB.Items.Add(b) |> ignore
-        b.Click.Add(fun _ -> buttonClicked b.Text |> ignore)
+        b.Click.Add(fun _ -> buttonClickedB b.Text |> ignore)
 
 
     let LoadImage imageName =
@@ -130,13 +153,7 @@ module FormModule =
             with _ -> ())
 
 
-    /// CLICK NUMBERED BUTTONS TO LAUNCH DEMO SECTIONS
-    btn1.Click.Add(fun _ -> MyDemoCharts.demo 1 |> ignore)
-    btn2.Click.Add(fun _ -> MyDemoCharts.demo 2 |> ignore)
-    btn3.Click.Add(fun _ -> MyDemoCharts.demo 3 |> ignore)
-    btn4.Click.Add(fun _ -> MyDemoCharts.demo 4 |> ignore)
-    btn5.Click.Add(fun _ -> MyDemoCharts.demo 5 |> ignore)
-    btn6.Click.Add(fun _ -> MyDemoCharts.demo 5 |> ignore)
+
 
     
  
@@ -144,6 +161,8 @@ module FormModule =
 //-------------------------------------------------------------------
 
 #if COMPILED
+// In case you're interested in Single-Threaded Apartment (STA):
+// https://devblogs.microsoft.com/cbrumme/apartments-and-pumping-in-the-clr/
 [<STAThread()>]
 Application.Run(FormModule.form)
 #else
