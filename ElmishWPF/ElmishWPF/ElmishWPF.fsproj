@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWpf>true</UseWpf>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Scratch.fsx" />
+    <Compile Include="TicTacToe.fs" />
+    <Content Include="project_notes.txt" />
+    <Compile Include="ElmishWpfDemo.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup />
+
+  <ItemGroup>
+    <PackageReference Include="Elmish.WPF" Version="3.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XamlViewsLib\XamlViewsLib.csproj" />
+  </ItemGroup>
+
+</Project>
