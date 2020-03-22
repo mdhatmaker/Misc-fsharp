@@ -22,7 +22,7 @@ let main argv =
     |> Chart.WithLabels 
          ["Bolivia"; "Ecuador"; "Madagascar"; "Average"]
     |> Chart.WithLegend true
-    |> Chart.WithSize (600, 250)
+    |> Chart.WithSize (600, 250) |> ignore
 
     // Playground for optional F# parameters
     let validInt = Some 1

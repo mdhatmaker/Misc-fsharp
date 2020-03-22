@@ -11,6 +11,8 @@ let main argv =
     //ChartModule.demo()
     //QuandlModule.Quandl.demo()
 
+    MortgageLending.demo()
+
 
     /// Get Metadata for a TimeSeries Database
     let result = QuandlModule.Quandl.GetDatabaseMetadata "CHRIS"
@@ -46,6 +48,7 @@ let main argv =
     displayChart "ICE_B1" "Brent Crude" ("CHRIS","ICE_B1")
     displayChart "ICE_G1" "GasOil" ("CHRIS","ICE_G1")
 
-
+    
+    
 
     0 // return an integer exit code
