@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CodeMathematical.fs" />
+    <Compile Include="Program.fs" />
+    <Compile Include="CodeMiscfs.fs" />
+    <Compile Include="CodeAmazon.fs" />
+  </ItemGroup>
+</Project>
