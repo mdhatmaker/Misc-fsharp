@@ -1,0 +1,22 @@
+﻿<Window x:Class="XamlViewsLib.TicTacToeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XamlViewsLib"
+        mc:Ignorable="d"
+        Title="TicTacToeView" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding Message}" />
+            <TextBlock>Here's a button. It's nice and shiny.</TextBlock>
+            <Button Command="{Binding ClickCommand}">The Shiny Button</Button>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>It is player </TextBlock>
+                <TextBlock Text="{Binding TurnPlayer}" Margin="5,0" />
+                <TextBlock>'s turn.</TextBlock>
+            </StackPanel>
+            <Grid Height="100" Background="Black"/>
+        </StackPanel>
+    </Grid>
+</Window>

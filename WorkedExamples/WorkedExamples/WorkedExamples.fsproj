@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Dynamic.fs" />
+    <Compile Include="RomanNumerals.fs" />
+    <Compile Include="ParsingCommandLine.fs" />
+    <Compile Include="StackBasedCalculator.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Interop.Dynamic" Version="5.0.1.268" />
+    <PackageReference Include="Python.Runtime.NETStandard" Version="3.7.1" />
+  </ItemGroup>
+
+</Project>

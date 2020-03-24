@@ -7,12 +7,17 @@ open Settings
 
 [<EntryPoint>]
 let main argv =
-    printfn "%f" Settings.Keyf1
-    printfn "%b" Settings.Keyb
-    printfn "%i" Settings.Keyi
-    printfn "%s" Settings.Keys
-    printfn "%f" Settings.Keyf2
+    printfn "----- F# TypeProviders -----\n"
 
-    System.Console.ReadKey() |> ignore
+    
 
+    Settings.demo()
+    WorldBank.demo()
+
+
+
+
+    printfn("\n\n----------- Done -----------")
+    System.Console.Read() |> ignore
+    System.Threading.Thread.Sleep(5000)
     0 // return an integer exit code

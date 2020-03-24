@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WordStemSentiment", "WordStemSentiment\WordStemSentiment.fsproj", "{FF199CCC-5765-4064-9FDB-132557170599}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF199CCC-5765-4064-9FDB-132557170599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF199CCC-5765-4064-9FDB-132557170599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF199CCC-5765-4064-9FDB-132557170599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF199CCC-5765-4064-9FDB-132557170599}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BACD3B4-B444-423B-9874-AF35FE6A7B42}
+	EndGlobalSection
+EndGlobal

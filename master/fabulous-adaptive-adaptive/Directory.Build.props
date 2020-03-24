@@ -1,0 +1,34 @@
+<Project>
+  <!-- NuGet Specs -->
+  <PropertyGroup>
+    <Version>0.50.3</Version>
+    <Authors>Fabulous Contributors</Authors>
+    <PackageVersion>0.50.3</PackageVersion>
+    <PackageReleaseNotes>[Fabulous.XamarinForms] Fixed an issue where the application could crash when LiveUpdate tries to refresh the app with an invalid view (https://github.com/fsprojects/Fabulous/pull/594)
+[Fabulous.XamarinForms] Fixed an issue where an InvalidCastException could occur (https://github.com/fsprojects/Fabulous/pull/597)</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/fsprojects/Fabulous</PackageProjectUrl>
+    <PackageTags>F#;Elmish;Elm;$(PackageTags)</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
+    <DisableImplicitSystemValueTupleReference>true</DisableImplicitSystemValueTupleReference>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Support for arbitrary value in AssemblyInformationalVersionAttribute https://github.com/Microsoft/visualfsharp/issues/4822 -->
+    <NoWarn>FS2003</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework) == 'netstandard2.0' OR $(TargetFramework) == 'netcoreapp2.2'">
+    <OtherFlags>/warnon:1182</OtherFlags>
+  </PropertyGroup>
+  <PropertyGroup Condition="($(IsPackable) == '' OR $(IsPackable) == 'true') AND $(Configuration) == 'Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework) == 'netstandard2.0'">
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+</Project>

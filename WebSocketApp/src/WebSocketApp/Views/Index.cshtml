@@ -1,0 +1,48 @@
+@model WebSocketApp.Models.Message
+@{
+    Layout = "_Layout";
+}
+@{
+    await Html.RenderPartialAsync("Partial");
+}
+<p>
+    @Model.Text
+</p>
+
+<div id="app">
+    <ul>
+        <li m-for="message in messages">{{ message }}</li>
+    </ul>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moonjs/0.11.0/moon.min.js"></script>
+<script>
+    function openWebSocket(vm) {
+        var socket = new WebSocket('ws://localhost:5000/ws')
+        socket.onopen = function () {
+            console.log('INFO: WebSocket opened successfully');
+        }
+        socket.onclose = function () {
+            console.log('INFO: WebSocket closed');
+            openWebSocket(vm);
+        }
+        socket.onmessage = function (messageEvent) {
+            var messages = vm.get('messages');
+            messages.unshift(messageEvent.data);
+            vm.set('messages', messages);
+        }
+        vm.set('socket', socket);
+    }
+    const app = new Moon({
+        el: '#app',
+        data: {
+            messages: []
+        },
+        hooks: {
+            init: function () {
+                var vm = this;
+                openWebSocket(vm);
+            }
+        }
+    });
+</script>
+

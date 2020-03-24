@@ -1,0 +1,11 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border BorderBrush="{x:Null}"
+            Height="50">
+        <TextBlock Text="{Binding WelcomeText}"
+                   VerticalAlignment="Stretch"
+                   TextAlignment="Center"
+                   FontFamily="Segoe"
+                   FontSize="26" />
+    </Border>
+</UserControl>
