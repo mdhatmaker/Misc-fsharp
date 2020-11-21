@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsFunAndProfit", "FsFunAndProfit\FsFunAndProfit.fsproj", "{6D4FBAE9-B719-4A97-B260-1DE3E20C3869}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D4FBAE9-B719-4A97-B260-1DE3E20C3869}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{6D4FBAE9-B719-4A97-B260-1DE3E20C3869}.Debug|anycpu.Build.0 = Debug|anycpu
+		{6D4FBAE9-B719-4A97-B260-1DE3E20C3869}.Release|anycpu.ActiveCfg = Release|anycpu
+		{6D4FBAE9-B719-4A97-B260-1DE3E20C3869}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,39 @@
+type file
+id LemonadeProvider
+authors
+    Steffen Forkmann, Gustavo Guerra, JohnDoeKyrgyz, Don Syme
+owners
+    Steffen Forkmann, Gustavo Guerra, JohnDoeKyrgyz, Don Syme
+projectUrl
+    http://github.com/fsprojects/LemonadeProvider
+iconUrl
+    https://raw.githubusercontent.com/fsprojects/LemonadeProvider/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/fsprojects/LemonadeProvider/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+tags
+    F# fsharp typeproviders LemonadeProvider
+summary
+    This library is for the .NET platform implementing LemonadeProvider.
+description
+    This library is for the .NET platform implementing LemonadeProvider.
+tags
+    F# fsharp typeproviders LemonadeProvider
+files
+    bin/Release/net45/LemonadeProvider.Runtime.* ==> lib/net45
+    bin/Release/netstandard2.0/LemonadeProvider.Runtime.* ==> lib/netstandard2.0
+    bin/Release/typeproviders/fsharp41/netstandard2.0/*.dll ==> typeproviders/fsharp41/netstandard2.0
+    bin/Release/typeproviders/fsharp41/netcoreapp3.1/*.dll ==> typeproviders/fsharp41/netcoreapp3.1
+    bin/Release/typeproviders/fsharp41/net45/*.dll ==> typeproviders/fsharp41/net45
+references
+    LemonadeProvider.Runtime.dll
+dependencies
+  FSharp.Core >= LOCKEDVERSION
+
+# put any package references here
+#  Some.Package
+#  framework: netcoreapp3.1
+#    System.Text.Encoding.CodePages >= LOCKEDVERSION
+#  framework: netstandard2.0
+#    System.Text.Encoding.CodePages >= LOCKEDVERSION

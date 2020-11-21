@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="HelloWorldTypeProvider.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HelloWorldTypeProvider.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="HelloWorldTypeProviderX.fs" />
+    <None Include="Playground.fsx" />
+    <PackageReference Include="FSharp.Data.TypeProviders" Version="5.0.0.6" />
+  </ItemGroup>
+</Project>

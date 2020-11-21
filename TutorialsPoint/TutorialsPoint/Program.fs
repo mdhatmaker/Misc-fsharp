@@ -82,7 +82,7 @@ let string_stuff() =
 [<EntryPoint>]
 let main argv =
     //printfn "Hello World from F#!"
-    //do_funcs()
+    do_funcs()
     //do_math()
     //string_stuff()
 
