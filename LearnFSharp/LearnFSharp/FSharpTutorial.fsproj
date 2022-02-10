@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="CommonLibrary.fs" />
+    <Compile Include="DomainTypes.fs" />
+    <Compile Include="Logger.fs" />
+    <Compile Include="LearnMatch.fs" />
+    <Compile Include="LearnTypes.fs" />
+    <Compile Include="LearnClasses.fs" />
+    <Compile Include="Demo001.fs" />
+    <Compile Include="Demo002.fs" />
+    <Compile Include="Demo003.fs" />
+    <Compile Include="LearnFunctions.fs" />
+    <Compile Include="Collections.fs" />
+    <Compile Include="LearnFiles.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+
+</Project>
