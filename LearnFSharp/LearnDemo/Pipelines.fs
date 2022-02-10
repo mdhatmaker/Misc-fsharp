@@ -3,7 +3,7 @@ module LearnDemo.Pipelines
 open System
 
 
-///// PIPELINE FUNCTION VALUES
+///// PIPELINE FUNCTION VALUES 1 //////////////////////////////////////////////
 
 /// Squares a value.
 let square x = x * x
@@ -49,3 +49,11 @@ let squareOddValuesAndAddOnePipeline values =
     |> List.map addOne
 
 squareOddValuesAndAddOnePipeline numbers
+
+
+///// PIPELINE FUNCTION VALUES 2 //////////////////////////////////////////////
+
+let li1 = [0..100]
+
+li1
+|> Seq.sum

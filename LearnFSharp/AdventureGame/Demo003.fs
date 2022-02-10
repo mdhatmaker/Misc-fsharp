@@ -9,8 +9,22 @@ open System
 let module_name = "Demo003"
 
 type Result<'TSuccess, 'TFailure> =
-        | Success of 'TSuccess
-        | Failure of 'TFailure
+    | Success of 'TSuccess
+    | Failure of 'TFailure
+
+
+/// Examples of using Result
+let r1 = Success("hello")
+let r2 = Failure(-1)
+
+let IsSuccess x =
+    match x with
+    | Success _ -> true
+    | _ -> false
+
+IsSuccess r1
+IsSuccess r2
+
 
 let do1() =
     printfn "BEGIN MODULE %s\n" module_name

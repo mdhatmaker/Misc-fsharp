@@ -33,6 +33,7 @@ let do1() =
     |> Seq.map exclaim
     |> Seq.sort
     |> printfn "%A"
+    
 
     // function composition
     let bigHello = prefixWithHello >> exclaim   // vs "prefixWithHello << exclaim"

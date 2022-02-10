@@ -76,14 +76,6 @@ let priceForSpecialComp =
 
 /// LISTS
 
-[1;2;3;4;5]     // list of integers
-
-[               // list of floats (no semicolon necessary if on separate lines)
-    1.
-    2.
-    3.
-    4.
-]
 
 let sales =
     [

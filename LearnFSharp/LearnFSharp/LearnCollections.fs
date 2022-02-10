@@ -3,10 +3,19 @@
 open LearnFunctions
     
 
-let square x = x * x
-
 
 ///// Lists
+
+[1;2;3;4;5]     // list of integers
+
+[               // list of floats (no semicolon necessary if on separate lines)
+    1.
+    2.
+    3.
+    4.
+]
+
+let square x = x * x      // function to square a number
 
 // To define a multiline function, just use indents
 let evens list =
@@ -116,11 +125,6 @@ Seq.iter (fun k -> printfn "Key = %A" k) di.Keys
 Seq.iter (fun v -> printfn "Value = %A" v) di.Values
 
 
-///// Maps
-let m1:Map<string,string> = Map.empty
-let m2 = Map.add "xxx" "yyy" m1
-
-
 
 
 ///// Arrays
@@ -209,3 +213,23 @@ let first100ValuesOfRandomWalk =
     |> Seq.toList
 
 
+
+
+///// Maps
+let m1:Map<string,string> = Map.empty
+let m2 = Map.add "xxx" "yyy" m1
+let m3 = Map.add "aaa" "bbb" m2
+
+m3
+|> Seq.length
+
+// create Map from a List
+let li1 = [11;12;13;14;15]
+
+let m4 =
+  li1
+  |> Seq.map (fun x -> (x,x))     // map to Tuple
+  |> Map.ofSeq
+
+m4.[11]
+m4.[12]
